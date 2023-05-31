@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  feim:
+    image: ${DOCKER_REGISTRY-}feim
+    build:
+      context: .
+      dockerfile: FEIM/Dockerfile
