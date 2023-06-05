@@ -29,6 +29,7 @@ steps:
     targetType: 'inline'
     script: |
      sudo docker login -u aviii9643 -p dckr_pat_Iz4Hh75PDhJTUDlwTU-cEaiT1Yk
+     sudo docker push aviii9643/demo123456:v1
     workingDirectory: '$(Build.SourcesDirectory)'
 
 - task: PowerShell@2
