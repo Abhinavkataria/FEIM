@@ -20,7 +20,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      docker tag denny aviii9643/demo123458
+      docker tag dennyq aviii9643/demo123458
     workingDirectory: '$(Build.SourcesDirectory)'
 
 - task: PowerShell@2
