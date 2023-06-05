@@ -33,14 +33,6 @@ steps:
     workingDirectory: '$(Build.SourcesDirectory)'
 
 - task: PowerShell@2
-  displayName: Push
-  inputs:
-    targetType: 'inline'
-    script: |
-      docker push aviii9643/demo123456:v1
-    workingDirectory: '$(Build.SourcesDirectory)'
-
-- task: PowerShell@2
   displayName: 'Deploy to OpenShift'
   inputs:
     targetType: 'inline'
