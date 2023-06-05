@@ -1,0 +1,51 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - group: DockerCreds		#Variable Group to store Creds	
+steps:  
+- task: PowerShell@2
+  displayName: Build
+  inputs:
+    targetType: 'inline'
+    script: |
+      docker build -t denny:v1 .
+    workingDirectory: '$(Build.SourcesDirectory)'
+  
+- task: PowerShell@2
+  displayName: Tag
+  inputs:
+    targetType: 'inline'
+    script: |
+      docker tag denny:v1 aviii9643/demo123456:v1
+    workingDirectory: '$(Build.SourcesDirectory)'
+
+- task: PowerShell@2
+  displayName: Log-in                   	# for ACR password will be Access key
+  inputs:
+    targetType: 'inline'
+    script: |
+     sudo docker login -u aviii9643 -p Maths@9643
+    workingDirectory: '$(Build.SourcesDirectory)'
+
+- task: PowerShell@2
+  displayName: Push
+  inputs:
+    targetType: 'inline'
+    script: |
+      docker push aviii9643/demo123456:v1
+    workingDirectory: '$(Build.SourcesDirectory)'
+
+- task: PowerShell@2
+  displayName: 'Deploy to OpenShift'
+  inputs:
+    targetType: 'inline'
+    script: |
+      oc login --token=sha256~Fag0MYBnp0dBbYFbRILSVQJENyBVJnERrcvl0DXBsc4 --server=https://api.sandbox-m3.1530.p1.openshiftapps.com:6443
+      oc project abhinavkataria12345-dev
+      oc new-app mydummapp
+      oc expose service mydummapp
+    workingDirectory: '$(Build.SourcesDirectory)'
