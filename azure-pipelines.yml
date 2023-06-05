@@ -20,15 +20,6 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      docker logout
-      docker system prune --all --volumes --force
-    workingDirectory: '$(Build.SourcesDirectory)'
-  
-- task: PowerShell@2
-  displayName: Tag
-  inputs:
-    targetType: 'inline'
-    script: |
       docker tag denny:v1 aviii9643/demo123456:v1
     workingDirectory: '$(Build.SourcesDirectory)'
 
