@@ -12,7 +12,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      docker build -t denny:v1 .
+      docker build -t dennyq .
     workingDirectory: '$(Build.SourcesDirectory)'
   
 - task: PowerShell@2
@@ -20,7 +20,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      docker tag denny:v1 aviii9643/demo123456:v1
+      docker tag denny aviii9643/demo123458
     workingDirectory: '$(Build.SourcesDirectory)'
 
 - task: PowerShell@2
@@ -29,7 +29,7 @@ steps:
     targetType: 'inline'
     script: |
      sudo docker login -u aviii9643 -p dckr_pat_Iz4Hh75PDhJTUDlwTU-cEaiT1Yk
-     sudo docker push aviii9643/demo123456:v1
+     sudo docker push aviii9643/demo123456
     workingDirectory: '$(Build.SourcesDirectory)'
 
 - task: PowerShell@2
