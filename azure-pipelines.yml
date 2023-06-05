@@ -38,7 +38,7 @@ steps:
     targetType: 'inline'
     script: |
       oc login --token=sha256~jG104gYMDgFxG4DPQv2ibxn8BmuokrRT2wBE4I_GyWY --server=https://api.sandbox-m3.1530.p1.openshiftapps.com:6443
-      oc project abhinavkataria12345-dev
-      oc new-app mydummapp
+      oc project  abhinavkataria12345-dev
+      oc new-app aviii9643/demo123458 mydummapp
       oc expose service mydummapp
     workingDirectory: '$(Build.SourcesDirectory)'
