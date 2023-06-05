@@ -28,7 +28,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-     sudo docker login -u aviii9643 -p Maths@9643
+     sudo docker login -u aviii9643 -p dckr_pat_Iz4Hh75PDhJTUDlwTU-cEaiT1Yk
     workingDirectory: '$(Build.SourcesDirectory)'
 
 - task: PowerShell@2
